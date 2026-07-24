@@ -11,9 +11,9 @@ import nmem_shared
 
 def main():
     parser = argparse.ArgumentParser(description="Nowledge Mem Status Plugin")
-    parser.add_argument("--conv-id", required=True, help="Conversation ID to check status for")
+    parser.add_argument("--conv-id", required=False, default=None, help="Conversation ID to check status for")
     args = parser.parse_args()
-    conv_id = args.conv_id
+    conv_id = args.conv_id or os.environ.get("NMEM_CONVERSATION_ID") or os.environ.get("CONVERSATION_ID") or "active-session"
 
     # 1. Read environment variables
     space = os.environ.get("NMEM_SPACE") or os.environ.get("NMEM_SPACE_ID") or "default"

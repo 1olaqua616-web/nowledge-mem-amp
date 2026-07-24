@@ -12,7 +12,7 @@ Check connection status and inspect session synchronizations.
 To construct the status report, execute the native status command:
 
 ```bash
-python3 hooks/nmem_status.py --conv-id <conversationId> || python hooks/nmem_status.py --conv-id <conversationId>
+python3 hooks/nmem_status.py
 ```
 
 Output the printed stdout report directly to the user.
