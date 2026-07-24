@@ -28,7 +28,7 @@ All skills installed via this pipeline are placed in:
 ### Step 1: Suggest and Analyze Relevance
 To find out what skills might be relevant to the current workspace, run:
 ```bash
-python3 skills/nmem-skill-manage/scripts/manage_skills.py suggest <workspace-root>
+python3 hooks/nmem_entrypoint.py skill-manage suggest <workspace-root>
 ```
 This script scans for Makefiles, workflow files, Flatpak/AetherPak configurations, and Git status to score and match skills on the server.
 
@@ -47,7 +47,7 @@ Do not install skills silently. Use Antigravity's rich interaction interfaces to
 ### Step 3: Install/Update the Skill
 Run the install command:
 ```bash
-python3 skills/nmem-skill-manage/scripts/manage_skills.py install <skill_id> <workspace-root> [--ignore]
+python3 hooks/nmem_entrypoint.py skill-manage install <skill_id> <workspace-root> [--ignore]
 ```
 * If the skill is in `candidate` stage, the script will automatically trigger compile and wait for it.
 * It will download the body directly using `GET /skills/<id>?include_body=true` (which avoids modifying the global activation state on the server).

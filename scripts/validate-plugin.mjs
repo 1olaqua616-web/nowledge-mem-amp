@@ -63,6 +63,7 @@ async function main() {
     'CHANGELOG.md',
     'RELEASING.md',
     'rules/nowledge-mem.md',
+    'hooks/nmem_entrypoint.py',
     'hooks/session-start.py',
     'hooks/session-end.py',
     'hooks/nmem-gate.py',

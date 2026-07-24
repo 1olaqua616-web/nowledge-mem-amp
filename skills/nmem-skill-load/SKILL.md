@@ -21,7 +21,7 @@ Use this skill when:
 Run `load_skill.py search` to query Nowledge Mem for candidate or compiled skills matching the query:
 
 ```bash
-python3 skills/nmem-load-skill/scripts/load_skill.py search "<skill query>"
+python3 hooks/nmem_entrypoint.py skill-load search "<skill query>"
 ```
 
 The script returns JSON listing available matching skills with their `id`, `name`, `description`, `stage`, and relevance.
@@ -35,7 +35,7 @@ If multiple matching skills are returned, present the choices to the user before
 Retrieve the full skill body without altering the global activation state on the server:
 
 ```bash
-python3 skills/nmem-load-skill/scripts/load_skill.py fetch "<skill_id>"
+python3 hooks/nmem_entrypoint.py skill-load fetch "<skill_id>"
 ```
 
 ### Step 4: Load into Active Session

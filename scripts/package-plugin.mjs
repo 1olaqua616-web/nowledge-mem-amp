@@ -31,6 +31,7 @@ const requiredArchiveEntries = new Set([
   './ARCHITECTURE.md',
   './CHANGELOG.md',
   './rules/nowledge-mem.md',
+  './hooks/nmem_entrypoint.py',
   './hooks/session-start.py',
   './hooks/session-end.py',
   './hooks/nmem-gate.py',

@@ -366,8 +366,17 @@ class TestSyncLearnings(unittest.TestCase):
         self.assertEqual(args[1], "upsert")
 
 
+nmem_entrypoint = import_module_from_path("nmem_entrypoint", str(HOOKS_DIR / "nmem_entrypoint.py"))
 load_skill = import_module_from_path("load_skill", str(HOOKS_DIR.parent / "skills" / "nmem-skill-load" / "scripts" / "load_skill.py"))
 manage_skills = import_module_from_path("manage_skills", str(HOOKS_DIR.parent / "skills" / "nmem-skill-manage" / "scripts" / "manage_skills.py"))
+
+
+class TestNmemEntrypoint(unittest.TestCase):
+    @patch("nmem_status.main")
+    def test_subcommand_status(self, mock_status_main):
+        with patch.object(sys, "argv", ["nmem_entrypoint.py", "status"]):
+            nmem_entrypoint.main()
+            mock_status_main.assert_called_once()
 
 
 class TestLoadSkill(unittest.TestCase):

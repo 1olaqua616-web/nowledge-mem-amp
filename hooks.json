@@ -3,7 +3,7 @@
     "PreInvocation": [
       {
         "type": "command",
-        "command": "python3 hooks/session-start.py || python hooks/session-start.py || echo {}",
+        "command": "python3 hooks/nmem_entrypoint.py session-start || python hooks/nmem_entrypoint.py session-start || echo {}",
         "timeout": 10
       }
     ],
@@ -13,7 +13,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 hooks/nmem-gate.py || python hooks/nmem-gate.py || echo {\\\"decision\\\":\\\"ask\\\"}",
+            "command": "python3 hooks/nmem_entrypoint.py gate || python hooks/nmem_entrypoint.py gate || echo {\"decision\":\"ask\"}",
             "timeout": 10
           }
         ]
@@ -22,7 +22,7 @@
     "Stop": [
       {
         "type": "command",
-        "command": "python3 hooks/session-end.py || python hooks/session-end.py || echo {}",
+        "command": "python3 hooks/nmem_entrypoint.py session-end || python hooks/nmem_entrypoint.py session-end || echo {}",
         "timeout": 20
       }
     ]

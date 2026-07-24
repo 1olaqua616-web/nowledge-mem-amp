@@ -50,7 +50,7 @@ Do not submit or create the skill silently. Write the proposed draft to a user-f
 1. **Direct REST API Import (Primary - Most Reliable)**:
    - Run the proposal python script to upload the fully drafted skill markdown directly to Nowledge Mem:
      ```bash
-     python3 skills/nmem-skill-propose/scripts/propose_skill.py <appDataDir>/brain/<conversation-id>/skill_draft.md
+     python3 hooks/nmem_entrypoint.py skill-propose <appDataDir>/brain/<conversation-id>/skill_draft.md
      ```
      This bypasses compile-queue failures by directly registering the complete structured procedure.
 2. **MCP Tools (Fallback)**:
