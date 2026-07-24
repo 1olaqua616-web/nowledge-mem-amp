@@ -44,18 +44,22 @@ Select the appropriate loading mode based on user intent:
 
 #### Mode A: Ephemeral Turn Injection (Zero-Restart)
 When the user wants the skill loaded immediately for the current task without persisting files:
-- Use the fetched skill markdown body directly within a contextual block in your response:
+- **Clean Formatting**: Strip leading YAML frontmatter (`---...---`) from the fetched skill body before rendering to the user.
+- **No Raw XML Tags**: Do NOT output raw `<dynamically_loaded_skill>` XML tags or unparsed YAML frontmatter headers in user-facing chat text.
+- Present the ingested skill using a clean GitHub-style callout:
   ```markdown
-  <dynamically_loaded_skill name="<skill-id>">
-  <skill-body-content>
-  </dynamically_loaded_skill>
+  > [!TIP]
+  > **Loaded Skill Context**: `<skill_name>` (`<trust_badge>`)
+  > *Ingested into active turn for this workspace.*
+
+  <clean-markdown-body-content>
   ```
 - Proceed directly to follow the injected skill's instructions for the current turn.
 
 #### Mode B: Persistent Workspace Installation
 When the user asks to install the skill for future use in the current repository:
 ```bash
-python3 skills/nmem-load-skill/scripts/load_skill.py install "<skill_id>" "<workspace-root>" [--ignore]
+python3 hooks/nmem_entrypoint.py skill-manage install "<skill_id>" "<workspace-root>" [--ignore]
 ```
 - Installs the file to `<workspace-root>/.agents/skills/<skill-name>/SKILL.md`.
 - Appends `.agents/skills/<skill-name>/` to `<workspace-root>/.git/info/exclude` if `--ignore` is set.
