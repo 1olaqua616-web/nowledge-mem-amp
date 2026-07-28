@@ -13,6 +13,7 @@
 | [`PI-CONNECTOR-CODE-READING-2026-07-28.md`](./PI-CONNECTOR-CODE-READING-2026-07-28.md) | 官方 `nowledge-mem-pi` connector 通读；§7 的 pi↔Amp 事件对照表是 S3 核心输入 |
 | [`amp-plugin-architecture.md`](./amp-plugin-architecture.md) | Amp 插件架构（来自 amp docs，经本机 `amp plugins show-docs` 实测核对） |
 | [`S1-WHY-AMP-NATIVE-CONNECTOR-2026-07-28.md`](./S1-WHY-AMP-NATIVE-CONNECTOR-2026-07-28.md) | **S1 产出**：为什么为 Amp 设计原生 connector（四层论证）；S2 主输入之一 |
+| [`S2-PRODUCT-REQUIREMENTS-2026-07-28.md`](./S2-PRODUCT-REQUIREMENTS-2026-07-28.md) | **S2 产出**：问题陈述 P1–P3 + 成功标准 C1–C7 + 范围与待拍板项；C1–C7 为 S3 验收约束 |
 
 ## 说明
 
