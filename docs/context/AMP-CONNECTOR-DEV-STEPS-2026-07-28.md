@@ -38,6 +38,7 @@
 | `PI-CONNECTOR-CODE-READING-2026-07-28.md` | 有效 · S1/S3 必读 — pi 官方 connector + 事件面对照 |
 | `docs/context/amp-plugin-architecture.md` | 有效 — Amp 插件架构（用户产出，已实测核对） |
 | `S1-WHY-AMP-NATIVE-CONNECTOR-2026-07-28.md` | S1 产出 — 为什么为 Amp 设计原生 connector（四层论证；S2 主输入之一；闸门：经用户批准后合并对应 PR） |
+| `S2-PRODUCT-REQUIREMENTS-2026-07-28.md` | S2 产出 — 问题陈述（P1–P3）+ 成功标准（C1–C7）+ 范围与待拍板项；C1–C7 是 S3 架构的验收约束（闸门：经用户批准后合并对应 PR） |
 | `AMP-CONNECTOR-DISCUSSION-HANDOFF-2026-07-27.md` | **废弃** — D1–D5 全部废弃（2026-07-28 裁决），不折入任何步骤 |
 | `Clippings/Why Software Factories Fail…`（仓库根 Clippings/） | 有效 — Dex 四阶段流程原文 |
 
