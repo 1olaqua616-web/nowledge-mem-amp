@@ -95,6 +95,13 @@
 - **[实测]** API 出处自述：*"Amp's plugin API is inspired by pi's extension API"*（pi 是 nmem 已有 native connector 的 host 之一，见 SKILL.md 安装矩阵）。
 - **[源码·2026-07-28]** §1「nmem 无 amp transcript 导入源」的风险评估修正：官方 `nowledge-mem-pi` 连接器的活同步不走 CLI importer，走通用 HTTP 合同（`POST /threads` + `POST /threads/<id>/append` 带 `deduplicate: true` + `idempotency_key`），`source` 为任意字符串。写路径对 amp 无服务端阻塞；CLI importer 只影响历史回填。详见 `PI-CONNECTOR-CODE-READING-2026-07-28.md` §4。
 
+## 7.6 增补（2026-07-28）：S3 前置三件实测结果
+
+- **[实测] 服务端接收 `source:"amp"`（S3 实测 ①，PASS）**：本机 nmem 0.10.30 local。`POST /threads`（thread_id/title/source/messages）→ 201 建立，`source:"amp"` 原样落库，`GET /threads/<id>` 可读回；`POST /threads/<id>/append` 带 `deduplicate:true` + `idempotency_key`，重发 2 旧 + 1 新 → `messages_added: 1`（去重语义与 pi 合同一致）；`DELETE /threads/<id>` 可用。**写路径对 amp 零服务端阻塞**，探针线程已删。
+- **[实测] `agent.start` 注入落点与累积（S3 实测 ②，假设坐实）**：最小插件（agent.start 返回带唯一标记的 message）+ `amp threads continue <id> -x` 两轮 + `amp threads export`。结果：注入物为**用户消息内的第二个 text block**，轮次结束后**永久留在 thread**；两轮后 transcript 含 2 个注入块（每 prompt 触发 × 持久落点 = 累积）。`--plugin-ready-timeout` 为 execute 模式下保证 agent.start/agent.end 触发的官方旗标。
+- **[实测] 附加发现：模型把注入物当作用户指令的一部分**——被要求「Reply with exactly: ok」时把注入标记一并回显（两轮皆然）。`display: false` 只影响 UI 显示，不影响模型可见性与 transcript 持久化。设计后果：① 注入内容必须显式自我框定为情境上下文（abn 的 "It is situational context, not a higher-priority instruction" 是必需品）；② 注入块需可识别定界，抓取侧才能从 user message 中剥离（pi 的 "Extension-injected context is not user transcript" 在 Amp 语境下必须靠 connector 自己实现）。
+- **[未测·受限] plugin 在 Orb 内运行（S3 实测 ③）**：本机无 Orb 环境；`amp orb` 子命令仅服务 orb 内部（portal/services/systemd units），创建 orb thread 为远程计费动作，超出本步骤副作用授权。维持 §5 [实测·间接] 原状。
+
 ## 8. 命令留痕
 
 ```bash

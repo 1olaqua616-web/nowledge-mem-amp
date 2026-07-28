@@ -14,6 +14,8 @@
 | [`amp-plugin-architecture.md`](./amp-plugin-architecture.md) | Amp 插件架构（来自 amp docs，经本机 `amp plugins show-docs` 实测核对） |
 | [`S1-WHY-AMP-NATIVE-CONNECTOR-2026-07-28.md`](./S1-WHY-AMP-NATIVE-CONNECTOR-2026-07-28.md) | **S1 产出**：为什么为 Amp 设计原生 connector（四层论证）；S2 主输入之一 |
 | [`S2-PRODUCT-REQUIREMENTS-2026-07-28.md`](./S2-PRODUCT-REQUIREMENTS-2026-07-28.md) | **S2 产出**：问题陈述 P1–P3 + 成功标准 C1–C7 + 范围与待拍板项；C1–C7 为 S3 验收约束 |
+| [`AMP-CAPABILITY-SURFACE-2026-07-28.md`](./AMP-CAPABILITY-SURFACE-2026-07-28.md) | 视图：Amp 能力面（connector 视角），八项能力 + 架构图 + C1–C7 映射 |
+| [`S3-SYSTEM-ARCHITECTURE-2026-07-28.md`](./S3-SYSTEM-ARCHITECTURE-2026-07-28.md) | **S3 产出**：两通道架构（注入/抓取/HTTP 合同/切换/韧性），决策来源速查；前置实测见 FACTS §7.6 |
 
 ## 说明
 
