@@ -13,9 +13,9 @@
 | 步骤 | 内容 | 产出 | 关键裁决 |
 |---|---|---|---|
 | **S0** 上下文供给 | 事实基底 + 三份读仓/能力面报告 + 本路由 | 见「文档清单」 | 已收尾 |
-| **S1** ABN 开发思路理解 | 把 abn 文章+repo 作为开发案例过一遍：每个关键决策做依赖关系分离——哪些被「用户↔Antigravity 依赖关系」（host 能力/hook 范式/安装通道）逼出，哪些是 connector 通用合同（注入语义/去重契约/降级哲学）。同时给「真的需要原生 connector 吗」以最终回答 | 设计前提文档：可迁移 / 不可迁移 / 需转译 三栏清单，每条带理由 | **不产出初版架构**（用户 2026-07-28 钉死） |
-| **S2** Product Requirements（Dex 一） | 问题陈述 + 成功标准，从用户原文与 S1 前提**重新推导** | PR 决议文档 | 旧 D1–D5 **全部废弃**，不折入、不继承 |
-| **S3** System Architecture（Dex 二） | 通道取舍（extension/skills/MCP/AGENTS.md 各承担什么）、注入与抓取机制、nmem HTTP 合同、session 内切换 | 架构文档（图 + 合同形状） | 输入：S1 前提清单 + pi 事件对照表（PI-…READING §7） |
+| **S1** 「为什么为 Amp 设计原生 connector」（2026-07-28 S1 thread 改口径） | 以 **Amp 能力面为基底**（FACTS §5/§7.5 实测），abn 与 pi 均为**对照样本**（不是基底、不是分析对象）。论证形状仿 abn 四层：价值面 / host 开了什么口子 / 为什么必须原生 / 不做的基线。注意：abn 的性能主论证（子进程 300–500ms）在 Amp 进程内范式下失效，不得引用 | 「为什么为 Amp 设计原生 connector」文档 | **不产出初版架构**；不做三栏清单、不做分诊清单（2026-07-28 裁决）；「是否需要」已由用户决定为「做」，S1 只论证「为什么」 |
+| **S2** Product Requirements（Dex 一） | 问题陈述 + 成功标准，从 **S1 产出与 FACTS 重新推导**。问题以「Amp ↔ nmem 关系中缺什么」表述（缺自治、缺真实抓取、缺运行时可变）；成功标准 = shipping 后可读可判 | PR 决议文档 | 旧 D1–D5 与原 Goals/Rules（DESIGN-CONTEXT）**全部废弃**（同源，2026-07-28 裁决），不折入、不继承；不做通道/机制选型（S3 领地） |
+| **S3** System Architecture（Dex 二） | 通道取舍（extension/skills/MCP/AGENTS.md 各承担什么）、注入与抓取机制、nmem HTTP 合同、session 内切换 | 架构文档（图 + 合同形状） | 输入：S1 产出（为什么文档）+ FACTS §5/§7.5（Amp 能力面，基底）+ pi 事件对照表（PI-…READING §7）。**架构定稿前完成三件实测**：`POST /threads` 带 `source:"amp"` 服务端是否接收、`agent.start` 注入物是否在 transcript 累积、plugin 在 Orb 内是否运行（2026-07-28 裁决：S1/S2 阶段不做实测） |
 | **S4** Program Design（Dex 三） | 代码形状：类型、函数签名、文件布局、调用栈树（伪代码可视化） | 程序设计文档 | — |
 | **S5** Vertical Slices（Dex 四） | 切片序列，每片可独立触摸验证、100–200 行可 review，逐片实现 | 切片计划 + 代码（进 fork 仓） | 可能多个 thread |
 
@@ -32,7 +32,7 @@
 
 | 文档（本目录） | 状态 |
 |---|---|
-| `AMP-CONNECTOR-DESIGN-CONTEXT.md` | 有效 — 用户原始目标/规则原文（Goals/Rules 节），Dex 流程出处 |
+| `AMP-CONNECTOR-DESIGN-CONTEXT.md` | **废弃**（2026-07-28 裁决）— Goals/Rules 与 D1–D5 同源，一并废弃，不作为任何步骤输入。唯一保留物：Dex 四阶段流程（步骤梯子 S2–S5 依据），其原文见下方 Clippings 条目与 Dex Horthy 原始链接 |
 | `AMP-CONNECTOR-FACTS-2026-07-27.md` | 有效 · 必读 — 事实基底（含 §7.5 实测增补与写路径修正） |
 | `ABN-ANTIGRAVITY-PLUGIN-CODE-READING-2026-07-27.md` | 有效 · S1 必读 — abn 插件源码通读 |
 | `PI-CONNECTOR-CODE-READING-2026-07-28.md` | 有效 · S1/S3 必读 — pi 官方 connector + 事件面对照 |

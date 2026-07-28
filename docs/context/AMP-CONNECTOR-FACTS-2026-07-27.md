@@ -1,6 +1,6 @@
 # Amp Connector 事实基底（2026-07-27）
 
-> 阶段：前置对齐（Product Requirements 之前）。本文件只含事实与出处，不含架构结论、hook 选择、文件结构、实现计划（按 AMP-CONNECTOR-DESIGN-CONTEXT.md 的排除范围）。
+> 阶段：前置对齐（Product Requirements 之前）。本文件只含事实与出处，不含架构结论、hook 选择、文件结构、实现计划。
 >
 > 证据分级：
 > - **[实测]** 本机命令输出，2026-07-27 执行
@@ -74,6 +74,8 @@
 - 注入时机原则：启动只给最小 briefing；skill 正文按需 ephemeral 注入（zero-restart）；workspace 级与 global 级 plugin 双扫描 + MCP 配置按会话动态解析 → bundle 可按 workspace/agent 切换。
 
 ## 7. 痛点 ↔ 事实对照（含最小推论，均已标注；非方向结论）
+
+> **[废弃 2026-07-28]** 本节以已废弃的 Goals 原文为组织轴（Goals/Rules 与 D1–D5 同源，一并废弃）。表内 [文档]/[实测] 事实条目本身仍真，存活登记见 §5 与 §7.5；本节不再作为任何步骤的输入。
 
 | 用户痛点（Goals 原文） | 相关事实 | 推论标注 |
 |---|---|---|
