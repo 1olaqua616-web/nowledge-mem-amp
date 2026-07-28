@@ -14,8 +14,8 @@
 |---|---|---|---|
 | **S0** 上下文供给 | 事实基底 + 三份读仓/能力面报告 + 本路由 | 见「文档清单」 | 已收尾 |
 | **S1** 「为什么为 Amp 设计原生 connector」（2026-07-28 S1 thread 改口径） | 以 **Amp 能力面为基底**（FACTS §5/§7.5 实测），abn 与 pi 均为**对照样本**（不是基底、不是分析对象）。论证形状仿 abn 四层：价值面 / host 开了什么口子 / 为什么必须原生 / 不做的基线。注意：abn 的性能主论证（子进程 300–500ms）在 Amp 进程内范式下失效，不得引用 | 「为什么为 Amp 设计原生 connector」文档 | **不产出初版架构**；不做三栏清单、不做分诊清单（2026-07-28 裁决）；「是否需要」已由用户决定为「做」，S1 只论证「为什么」 |
-| **S2** Product Requirements（Dex 一） | 问题陈述 + 成功标准，从 **S1 产出与 FACTS 重新推导** | PR 决议文档 | 旧 D1–D5 与原 Goals/Rules（DESIGN-CONTEXT）**全部废弃**（同源，2026-07-28 裁决），不折入、不继承 |
-| **S3** System Architecture（Dex 二） | 通道取舍（extension/skills/MCP/AGENTS.md 各承担什么）、注入与抓取机制、nmem HTTP 合同、session 内切换 | 架构文档（图 + 合同形状） | 输入：S1 前提清单 + pi 事件对照表（PI-…READING §7） |
+| **S2** Product Requirements（Dex 一） | 问题陈述 + 成功标准，从 **S1 产出与 FACTS 重新推导**。问题以「Amp ↔ nmem 关系中缺什么」表述（缺自治、缺真实抓取、缺运行时可变）；成功标准 = shipping 后可读可判 | PR 决议文档 | 旧 D1–D5 与原 Goals/Rules（DESIGN-CONTEXT）**全部废弃**（同源，2026-07-28 裁决），不折入、不继承；不做通道/机制选型（S3 领地） |
+| **S3** System Architecture（Dex 二） | 通道取舍（extension/skills/MCP/AGENTS.md 各承担什么）、注入与抓取机制、nmem HTTP 合同、session 内切换 | 架构文档（图 + 合同形状） | 输入：S1 产出（为什么文档）+ FACTS §5/§7.5（Amp 能力面，基底）+ pi 事件对照表（PI-…READING §7）。**架构定稿前完成三件实测**：`POST /threads` 带 `source:"amp"` 服务端是否接收、`agent.start` 注入物是否在 transcript 累积、plugin 在 Orb 内是否运行（2026-07-28 裁决：S1/S2 阶段不做实测） |
 | **S4** Program Design（Dex 三） | 代码形状：类型、函数签名、文件布局、调用栈树（伪代码可视化） | 程序设计文档 | — |
 | **S5** Vertical Slices（Dex 四） | 切片序列，每片可独立触摸验证、100–200 行可 review，逐片实现 | 切片计划 + 代码（进 fork 仓） | 可能多个 thread |
 
