@@ -39,8 +39,15 @@
 | `docs/context/amp-plugin-architecture.md` | 有效 — Amp 插件架构（用户产出，已实测核对） |
 | `S1-WHY-AMP-NATIVE-CONNECTOR-2026-07-28.md` | S1 产出 — 为什么为 Amp 设计原生 connector（四层论证；S2 主输入之一；闸门：经用户批准后合并对应 PR） |
 | `S2-PRODUCT-REQUIREMENTS-2026-07-28.md` | S2 产出 — 问题陈述（P1–P3）+ 成功标准（C1–C7）+ 范围与待拍板项；C1–C7 是 S3 架构的验收约束（闸门：经用户批准后合并对应 PR） |
+| `AMP-CAPABILITY-SURFACE-2026-07-28.md` | 有效 · 视图 — Amp 能力面（connector 视角），FACTS §5/§7.5 + amp-plugin-architecture 的重组，带 mermaid 图与 C1–C7 映射；不载新事实 |
+| `S3-SYSTEM-ARCHITECTURE-2026-07-28.md` | S3 产出 — 两通道架构：注入（首轮+切换重注+定界框定）、抓取（连续增量+幂等,无队列）、HTTP 合同（实测）、C5 切换、待拍板落定;实测 ①② 结果见 FACTS §7.6（闸门：经用户批准后合并对应 PR） |
 | `AMP-CONNECTOR-DISCUSSION-HANDOFF-2026-07-27.md` | **废弃** — D1–D5 全部废弃（2026-07-28 裁决），不折入任何步骤 |
 | `Clippings/Why Software Factories Fail…`（仓库根 Clippings/） | 有效 — Dex 四阶段流程原文 |
+
+## 开发后核查项（2026-07-28 裁决：不进当期文档，S5 完成后查看是否已被覆盖）
+
+1. 候选 P4（流程固定/抗漂移）：会话内约定的流程可被 nmem 固定并持续生效（nmem 程序性记忆 × 每轮确定性重申）；与 C7 有成本张力。
+2. thread fork/continue 语义：Amp 会话可 follow thread id 继续或 fork，fork 血缘对 C3「同一会话」身份判定的影响；必要时并入 S3 实测。
 
 ## 新 thread 开题
 
