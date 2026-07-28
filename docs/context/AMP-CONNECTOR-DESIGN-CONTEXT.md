@@ -1,5 +1,7 @@
 # Amp Connector Design Agent Context
 
+> **[废弃 2026-07-28，用户裁决]** 本文档的 Goals/Rules/Scope 与 D1–D5 同源，一并废弃，不作为任何步骤的输入。唯一保留物：Rules 节所引 **Dex 四阶段流程**（步骤梯子 S2–S5 的依据），其原文以 Rules/Scope 节所列 Dex Horthy 原始来源为准。「真的需要原生 connector 吗」已由用户决定为「做」，S1 只论证「为什么」。
+>
 > 本文件只路由原始目标、规则和范围。Design agent 必须读取列出的原文，不以本文件替代原文；不要继承此前 thread 中生成的 connector 设计或必要性结论。
 
 ## Goals
